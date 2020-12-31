@@ -10,5 +10,3 @@ The project defined sudoku to be solved is:
 The resolution is:
 
 ![alt text](./archive/solved.png "unsolved")
-
-

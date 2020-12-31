@@ -121,24 +121,41 @@ class Sudoku(object):
     # you may add more classes/functions if you think is useful
     # However, ensure all the classes/functions are in this file ONLY
 
+def printSudoku(title, puzzle):
+    print("-----------------------------------------")
+    print("----------- "+title+" -----------")
+    print("-----------------------------------------")
+    print(" ","","","","1   2   3   4   5   6   7   8   9")
+    print(" ","","","","-   -   -   -   -   -   -   -   -")
+    print("a)",str(puzzle[0]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("b)",str(puzzle[1]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("c)",str(puzzle[2]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("d)",str(puzzle[3]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("e)",str(puzzle[4]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("f)",str(puzzle[5]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("g)",str(puzzle[6]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("h)",str(puzzle[7]).replace(","," |").replace("]"," |").replace("[","| "))
+    print("i)",str(puzzle[8]).replace(","," |").replace("]"," |").replace("[","| "))
+    print(" ","","","","-   -   -   -   -   -   -   -   -")
+
 if __name__ == "__main__":
-    # STRICTLY do NOT modify the code in the main function here
-    if len(sys.argv) != 3:
-        print ("\nUsage: python sudoku_A2_xx.py input.txt output.txt\n")
-        raise ValueError("Wrong number of arguments!")
-
-    try:
-        f = open(sys.argv[1], 'r')
-    except IOError:
-        print ("\nUsage: python sudoku_A2_xx.py input.txt output.txt\n")
-        raise IOError("Input file not found!")
-
     puzzle = [[0 for i in range(9)] for j in range(9)]
-    lines = f.readlines()
-
+    printSudoku("AC3 SUDOKU SOLVER",puzzle)
+    print("-----------------------------------------")
+    print("----------------- SETUP -----------------")
+    print("-----------------------------------------")
+    print("To solve a sudoku matrix you need to specify its input.txt file path.")
+    userInput = input('Please, enter the path here:')
+    try:
+        file = open(userInput, 'r')
+    except IOError:
+        print ("\nYou need to enter a valid file path!\n")
+        raise IOError("Input file not found!")
+    
+    rows = file.readlines()
     i, j = 0, 0
-    for line in lines:
-        for number in line:
+    for row in rows:
+        for number in row:
             if '0' <= number <= '9':
                 puzzle[i][j] = int(number)
                 j += 1
@@ -146,11 +163,20 @@ if __name__ == "__main__":
                     i += 1
                     j = 0
 
-    sudoku = Sudoku(puzzle)
-    ans = sudoku.solve()
+    printSudoku("ENTERED MATRIX",puzzle)
+    userInput = input("Want to solve it? (y/n)")
+    if(userInput != "" or userInput != " "):
+        if(userInput == "y"):
+            sudoku = Sudoku(puzzle)
+            ans = sudoku.solve()
+            printSudoku("SOLVED RESULT", ans)
+            with open("./output.txt", 'a') as f:
+                for i in range(9):
+                    for j in range(9):
+                        f.write(str(ans[i][j]) + " ")
+                    f.write("\n")
+            print("Result saved! (./output.txt)")
+            print("Thanks for using the AC3 sudoku solver!")
+            exit
 
-    with open(sys.argv[2], 'a') as f:
-        for i in range(9):
-            for j in range(9):
-                f.write(str(ans[i][j]) + " ")
-            f.write("\n")
+    
