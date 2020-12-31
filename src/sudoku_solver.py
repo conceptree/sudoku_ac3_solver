@@ -170,12 +170,12 @@ if __name__ == "__main__":
             sudoku = Sudoku(puzzle)
             ans = sudoku.solve()
             printSudoku("SOLVED RESULT", ans)
-            with open("./output.txt", 'a') as f:
+            with open("../data/output.txt", 'a') as f:
                 for i in range(9):
                     for j in range(9):
                         f.write(str(ans[i][j]) + " ")
                     f.write("\n")
-            print("Result saved! (./output.txt)")
+            print("Result saved! (../data/output.txt)")
             print("Thanks for using the AC3 sudoku solver!")
             exit
 
