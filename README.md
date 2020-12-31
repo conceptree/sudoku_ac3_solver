@@ -3,11 +3,11 @@ This python based program solves any 9x9 sudoku game through the AC3 algorithm b
 
 This is an academic project and for that same reason you might find the code lacking some possible optimizations.
 
-#Usage
+# Usage
 
 ![alt text](./archive/usage.gif "usage")
 
-#Project Needs/Requirements
+# Project Needs/Requirements
 
 1. Use the AC3 algorithm based on constrains satisfactions.
 2. 9X9 sudoku's.
