@@ -122,35 +122,35 @@ class Sudoku(object):
     # However, ensure all the classes/functions are in this file ONLY
 
 def printSudoku(title, puzzle):
-    print("-----------------------------------------")
-    print("----------- "+title+" -----------")
-    print("-----------------------------------------")
-    print(" ","","","","1   2   3   4   5   6   7   8   9")
-    print(" ","","","","-   -   -   -   -   -   -   -   -")
-    print("a)",str(puzzle[0]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("b)",str(puzzle[1]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("c)",str(puzzle[2]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("d)",str(puzzle[3]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("e)",str(puzzle[4]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("f)",str(puzzle[5]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("g)",str(puzzle[6]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("h)",str(puzzle[7]).replace(","," |").replace("]"," |").replace("[","| "))
-    print("i)",str(puzzle[8]).replace(","," |").replace("]"," |").replace("[","| "))
-    print(" ","","","","-   -   -   -   -   -   -   -   -")
+    print('-----------------------------------------')
+    print('----------- '+title+' -----------')
+    print('-----------------------------------------')
+    print(' ','','','','1   2   3   4   5   6   7   8   9')
+    print(' ','','','','-   -   -   -   -   -   -   -   -')
+    print('a)',str(puzzle[0]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('b)',str(puzzle[1]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('c)',str(puzzle[2]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('d)',str(puzzle[3]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('e)',str(puzzle[4]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('f)',str(puzzle[5]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('g)',str(puzzle[6]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('h)',str(puzzle[7]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print('i)',str(puzzle[8]).replace(',',' |').replace(']',' |').replace('[','| '))
+    print(' ','','','','-   -   -   -   -   -   -   -   -')
 
 if __name__ == "__main__":
     puzzle = [[0 for i in range(9)] for j in range(9)]
-    printSudoku("AC3 SUDOKU SOLVER",puzzle)
-    print("-----------------------------------------")
-    print("----------------- SETUP -----------------")
-    print("-----------------------------------------")
-    print("To solve a sudoku matrix you need to specify its input.txt file path.")
+    printSudoku('AC3 SUDOKU SOLVER',puzzle)
+    print('-----------------------------------------')
+    print('----------------- SETUP -----------------')
+    print('-----------------------------------------')
+    print('To solve a sudoku matrix you need to specify its input.txt file path.')
     userInput = input('Please, enter the path here:')
     try:
         file = open(userInput, 'r')
     except IOError:
-        print ("\nYou need to enter a valid file path!\n")
-        raise IOError("Input file not found!")
+        print ('\nYou need to enter a valid file path!\n')
+        raise IOError('Input file not found!')
     
     rows = file.readlines()
     i, j = 0, 0
@@ -163,20 +163,20 @@ if __name__ == "__main__":
                     i += 1
                     j = 0
 
-    printSudoku("ENTERED MATRIX",puzzle)
-    userInput = input("Want to solve it? (y/n)")
-    if(userInput != "" or userInput != " "):
-        if(userInput == "y"):
+    printSudoku('ENTERED MATRIX',puzzle)
+    userInput = input('Want to solve it? (y/n)')
+    if(userInput != '' or userInput != ' '):
+        if(userInput == 'y'):
             sudoku = Sudoku(puzzle)
             ans = sudoku.solve()
-            printSudoku("SOLVED RESULT", ans)
-            with open("../data/output.txt", 'a') as f:
+            printSudoku('SOLVED RESULT', ans)
+            with open('../data/output.txt', 'a') as f:
                 for i in range(9):
                     for j in range(9):
-                        f.write(str(ans[i][j]) + " ")
-                    f.write("\n")
-            print("Result saved! (../data/output.txt)")
-            print("Thanks for using the AC3 sudoku solver!")
+                        f.write(str(ans[i][j]) + ' ')
+                    f.write('\n')
+            print('Result saved! (../data/output.txt)')
+            print('Thanks for using the AC3 sudoku solver!')
             exit
 
     
