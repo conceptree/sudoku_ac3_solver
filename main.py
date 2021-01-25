@@ -4,6 +4,7 @@ from CSP import csp
 from AC3 import AC3
 import re
 
+# metodo para compilar a matriz 
 def buildList(inputPath):
     tempList = []
     with open(inputPath, "r") as inputFile:
@@ -12,6 +13,7 @@ def buildList(inputPath):
     inputFile.close()
     return tempList
 
+# itera e imprime as matrizes
 def printMatrix(grid):
     stringMatrix = str(grid) 
     n = 9
@@ -34,7 +36,7 @@ def main():
     for grid in lineList:
         prev = time.time()
         sudoku = csp(grid=grid)
-        solved  = ac3.applyAC3(sudoku)
+        solved = ac3.applyAC3(sudoku)
         if ac3.isComplete(sudoku) and solved:
             print ("--------------- Initial problem ---------------")
             printMatrix(grid)
